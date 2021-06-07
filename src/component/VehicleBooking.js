@@ -1,6 +1,6 @@
 import { Alert, Button } from "react-bootstrap";
 
-export const Booking = () => {
+export const VehicleBooking = () => {
   return (
     <div>
       <div>
