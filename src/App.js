@@ -1,16 +1,13 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 import { Vehicle } from "./component/Vehicle";
-import { VehicleBooking } from "./component/VehicleBooking";
+import { BrowserRouter as Router } from "react-router-dom";
+import { AppNavBar } from "./common/AppNavBar";
 // vehicle
 function App() {
   return (
-    <div>
-      <Vehicle></Vehicle>
-      <VehicleBooking />
-    </div>
+    <Router>
+      <AppNavBar />
+    </Router>
   );
 }
-
-export default App;
