@@ -8,6 +8,8 @@ import { VehicleBooking } from "./component/VehicleBooking";
 import { VehicleBookingList } from "./component/VehicleBookingList";
 import { AdminLogin } from "./component/AdminLogin";
 import { VehicleList } from "./component/VehicleList";
+import { VehicleBrand } from "./component/VehicleBrand";
+import { VehicleBrandList } from "./component/VehicleBrandList";
 // vehicle
 function App() {
   return (
@@ -31,6 +33,12 @@ function App() {
         </Route>
         <Route path="/vehiclelist" exact>
           <VehicleList />
+        </Route>
+        <Route path="/vehiclebrand" exact>
+          <VehicleBrand />
+        </Route>
+        <Route path="/vehiclebrandlist" exact>
+          <VehicleBrandList />
         </Route>
       </Switch>
     </Router>

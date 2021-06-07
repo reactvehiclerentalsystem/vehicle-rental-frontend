@@ -22,7 +22,7 @@ export function AdminLogin() {
           />
           <input
             type="button"
-            className="btn btn-outline-success w-100"
+            className="btn btn-outline-dark w-100"
             value="Login"
           />
         </div>

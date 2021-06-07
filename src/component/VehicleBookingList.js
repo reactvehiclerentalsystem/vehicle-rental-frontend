@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import { UserNavBar } from "../common/AppNavBar";
 
 export const VehicleBookingList = () => {
@@ -29,11 +30,9 @@ export const VehicleBookingList = () => {
                 <td>02-05-2021</td>
                 <td>08-05-2021</td>
 
-                <input
-                  type="button"
-                  value="Cancel"
-                  className="btn btn-link text-danger"
-                />
+                <Button variant="outline-danger" className="w-5 mt-1">
+                  Cancel
+                </Button>
               </tr>
             </tbody>
           </table>
