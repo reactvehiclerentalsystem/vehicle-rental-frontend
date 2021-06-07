@@ -1,11 +1,11 @@
 import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export function NavBar() {
+export function AppNavBar() {
   return (
     <Navbar bg="dark" expand="lg" variant="dark">
       <Navbar.Brand as={Link} to="/">
-        EMS APP
+        VRS APP
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
