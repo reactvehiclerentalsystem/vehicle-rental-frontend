@@ -7,7 +7,7 @@ export function VehicleList() {
       <div className="row">
         <div className=" col-2 col-md-2 d-none d-md-block"></div>
         <div className="col-12 col-md-8 ">
-          <h3 className="alert alert-secondary">Vehicle Booking List</h3>
+          <h3 className="alert alert-secondary">Vehicle List</h3>
 
           <table class="table">
             <thead class="table-dark">

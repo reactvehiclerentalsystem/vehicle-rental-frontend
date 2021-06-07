@@ -56,6 +56,12 @@ export function Vehicle() {
             required="required"
           />
           <input
+            type="text"
+            className="form-control mb-2"
+            placeholder="Vehicle Picture Path"
+            required="required"
+          />
+          <input
             type="button"
             className="btn btn-outline-success w-100"
             value="Login"
