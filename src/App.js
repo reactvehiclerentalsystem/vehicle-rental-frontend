@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import { Vehicle } from "./component/Vehicle";
-
+// vehicle
 function App() {
   return <Vehicle></Vehicle>;
 }
