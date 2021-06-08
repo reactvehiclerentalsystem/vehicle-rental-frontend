@@ -23,12 +23,17 @@ export const VehicleBooking = () => {
             />
           </div>
           <div>
-            <input
-              type="text"
-              className="form-control mb-2 p-2"
-              placeholder="Enter the Vehicle Id"
-              pattern="^(?=.*\d)[\d]{1,}$"
-            />
+            <select
+              class="form-control form-select w-100 p-2 mb-2"
+              aria-label=".form-select-lg example"
+            >
+              <option selected>Choose your vehicle</option>
+              {["Swift", "Wagonor", "City", "Polo"].map((item, index) => (
+                <option value="1" key={index}>
+                  {item}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
             <input
