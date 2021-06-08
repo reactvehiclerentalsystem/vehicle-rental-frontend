@@ -12,6 +12,8 @@ import { VehicleBrand } from "./component/VehicleBrand";
 import { VehicleBrandList } from "./component/VehicleBrandList";
 import { HomePage } from "./component/HomePage";
 import { Registration } from "./component/Registration";
+import { GuestUser } from "./component/GuestUser";
+import { VehicleListUser } from "./component/VehicleListUser";
 // vehicle
 function App() {
   return (
@@ -27,6 +29,9 @@ function App() {
         <Route path="/adminlogin" exact>
           <AdminLogin />
         </Route>
+        <Route path="/guestuser" exact>
+          <GuestUser />
+        </Route>
         <Route path="/register" exact>
           <Registration />
         </Route>
@@ -41,6 +46,9 @@ function App() {
         </Route>
         <Route path="/vehiclelist" exact>
           <VehicleList />
+        </Route>
+        <Route path="/vehiclelistuser" exact>
+          <VehicleListUser />
         </Route>
         <Route path="/vehiclebrand" exact>
           <VehicleBrand />

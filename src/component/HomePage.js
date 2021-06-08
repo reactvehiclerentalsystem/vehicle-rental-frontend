@@ -29,6 +29,7 @@ export function HomePage() {
               type="button"
               value="Guest User"
               className="form-control btn btn-outline-dark m-4 w-50"
+              onClick={() => history.push("/guestuser")}
             />
           </div>
         </div>
