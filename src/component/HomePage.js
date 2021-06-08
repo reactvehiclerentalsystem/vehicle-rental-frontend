@@ -1,6 +1,8 @@
 import { AppNavBar } from "../common/AppNavBar";
+import { useHistory } from "react-router-dom";
 
 export function HomePage() {
+  const history = useHistory();
   return (
     <div>
       <AppNavBar />
@@ -15,11 +17,13 @@ export function HomePage() {
               type="button"
               value="User Login"
               className="form-control btn btn-outline-dark m-4 w-50"
+              onClick={() => history.push("/userlogin")}
             />
             <input
               type="button"
               value="Admin Login"
               className="form-control btn btn-outline-dark m-4 w-50"
+              onClick={() => history.push("/adminlogin")}
             />
             <input
               type="button"

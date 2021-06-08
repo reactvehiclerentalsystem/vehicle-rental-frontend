@@ -1,7 +1,9 @@
 import { Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import { AppNavBar } from "../common/AppNavBar";
 
 export function Registration() {
+  const history = useHistory();
   return (
     <div>
       <AppNavBar />
@@ -53,9 +55,17 @@ export function Registration() {
             </div>
 
             <div>
-              <Button variant="outline-dark" className="w-100">
+              <Button variant="outline-dark" className="w-100 mb-3">
                 Register
               </Button>
+            </div>
+            <div>
+              <input
+                type="button"
+                className="btn btn-outline-dark w-100"
+                value="Login"
+                onClick={() => history.push("/userlogin")}
+              />
             </div>
           </form>
         </div>
