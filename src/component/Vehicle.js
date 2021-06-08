@@ -1,6 +1,18 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { AdminNavBar } from "../common/AppNavBar";
+import { getAllBrandAction } from "../redux/VehicleBrandReducer";
 
 export function Vehicle() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  console.log(state);
+
+  // Used to Initialize :: READ THE DATA FROM API
+  useEffect(() => {
+    dispatch(getAllBrandAction());
+  }, []);
+
   return (
     <div>
       <AdminNavBar />
@@ -25,9 +37,9 @@ export function Vehicle() {
             aria-label=".form-select-lg example"
           >
             <option selected>Brand Name</option>
-            {["Maruti", "BMW", "Audi", "Tata"].map((item, index) => (
+            {[...state.VehicleBrandR.list].map((item, index) => (
               <option value="1" key={index}>
-                {item}
+                {item.brand_id}-{item.brand_name}
               </option>
             ))}
           </select>
@@ -64,7 +76,7 @@ export function Vehicle() {
           <input
             type="button"
             className="btn btn-outline-success w-100"
-            value="Login"
+            value="Add Vehicle"
           />
         </div>
         <div className="col-3 col-md-3  d-none d-md-block"></div>
