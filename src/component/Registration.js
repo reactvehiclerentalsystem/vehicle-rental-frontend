@@ -4,12 +4,13 @@ import { AppNavBar } from "../common/AppNavBar";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { UserRegisterAction } from "../redux/UserRegisterReducer";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export function Registration() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
+  const formEL = useRef();
 
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -26,27 +27,35 @@ export function Registration() {
   const RegisterUser = (e) => {
     e.preventDefault();
 
-    // THIS IS REDUX ACTION CALLING
-    dispatch(
-      UserRegisterAction({
-        userAdhaar,
-        userNumber,
-        userName,
-        userEmail,
-        userPassword,
-      })
-    );
+    if (formEL.current.checkValidity() === false) {
+      // hanlde the false case
+      e.preventDefault();
+      e.stopPropagation();
+      formEL.current.classList.add("was-validated");
+    } else {
+      dispatch(
+        UserRegisterAction({
+          userAdhaar,
+          userNumber,
+          userName,
+          userEmail,
+          userPassword,
+        })
+      );
 
-    // A2: navigate to another page
-    // history.push("/list-employee");
+      // A2: navigate to another page
+      // history.push("/list-employee");
 
-    // reset the form
-    setUserName("");
-    setUserPassword("");
-    setUserEmail("");
-    setUserNumber("");
-    setUserAdhaar("");
+      // reset the form
+      setUserName("");
+      setUserPassword("");
+      setUserEmail("");
+      setUserNumber("");
+      setUserAdhaar("");
+    }
   };
+
+  // THIS IS REDUX ACTION CALLING
 
   return (
     <div>
@@ -55,9 +64,8 @@ export function Registration() {
       <div className="row">
         <div className="col-3 col-md-3 d-none d-md-block"></div>
         <div className="col-12 col-md-6">
-          <form>
-            <h3 className="alert alert-secondary">Register</h3>
-
+          <h3 className="alert alert-secondary">Register</h3>
+          <form ref={formEL} class="needs-validation" novalidate>
             <div className="form-group">
               <input
                 type="text"
@@ -65,26 +73,9 @@ export function Registration() {
                 placeholder="Enter Name"
                 value={userName}
                 onChange={(e) => updateUserName(e)}
-              />
-            </div>
-
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter Email"
-                value={userEmail}
-                onChange={(e) => updateUserEmail(e)}
-              />
-            </div>
-
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter Mobile"
-                value={userNumber}
-                onChange={(e) => updateUserNumber(e)}
+                minLength="4"
+                maxLength="10"
+                required
               />
             </div>
 
@@ -92,9 +83,35 @@ export function Registration() {
               <input
                 type="email"
                 className="form-control"
+                placeholder="Enter Email"
+                value={userEmail}
+                onChange={(e) => updateUserEmail(e)}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Enter Mobile"
+                value={userNumber}
+                onChange={(e) => updateUserNumber(e)}
+                min="555555555"
+                max="5555555555"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <input
+                type="number"
+                className="form-control"
                 placeholder="Enter Adhaar"
                 value={userAdhaar}
                 onChange={(e) => updateUserAdhaar(e)}
+                min="555555555"
+                required
               />
             </div>
 
@@ -105,6 +122,7 @@ export function Registration() {
                 placeholder="Enter password"
                 value={userPassword}
                 onChange={(e) => updateUserPassword(e)}
+                required
               />
             </div>
 
