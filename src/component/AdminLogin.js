@@ -34,7 +34,7 @@ export function AdminLogin() {
   };
 
   if (state.AdminLogin.loginAction === true) {
-    history.push("/");
+    history.push("/admin");
 
     return <div></div>;
   }

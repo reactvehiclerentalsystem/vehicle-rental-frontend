@@ -15,6 +15,7 @@ import { Registration } from "./component/Registration";
 import { GuestUser } from "./component/GuestUser";
 import { VehicleListUser } from "./component/VehicleListUser";
 import { User } from "./component/User";
+import { Admin } from "./component/Admin";
 import { VehicleListRegisteredUser } from "./component/VehicleListRegisteredUser";
 // vehicle
 function App() {
@@ -39,6 +40,9 @@ function App() {
         </Route>
         <Route path="/user" exact>
           <User />
+        </Route>
+        <Route path="/admin" exact>
+          <Admin />
         </Route>
         <Route path="/vehiclebooking" exact>
           <VehicleBooking />
