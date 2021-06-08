@@ -9,7 +9,7 @@ const USER_REGISTER = "USER_REGISTER";
 export function UserRegisterAction(payload) {
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = "http://localhost:8090/api/info/";
+    const url = "http://localhost:8080/api/info/";
     const requestBody = { ...payload };
 
     // HTTP Client

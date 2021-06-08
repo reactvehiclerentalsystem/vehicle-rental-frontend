@@ -97,8 +97,8 @@ export function Registration() {
                 placeholder="Enter Mobile"
                 value={userNumber}
                 onChange={(e) => updateUserNumber(e)}
-                min="555555555"
-                max="5555555555"
+                min="999999999"
+                max="9999999999"
                 required
               />
             </div>
@@ -110,7 +110,7 @@ export function Registration() {
                 placeholder="Enter Adhaar"
                 value={userAdhaar}
                 onChange={(e) => updateUserAdhaar(e)}
-                min="555555555"
+                min="9999999999"
                 required
               />
             </div>
