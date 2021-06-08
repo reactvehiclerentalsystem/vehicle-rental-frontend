@@ -73,8 +73,8 @@ export function Registration() {
                 placeholder="Enter Name"
                 value={userName}
                 onChange={(e) => updateUserName(e)}
-                minLength="4"
-                maxLength="10"
+                minLength="3"
+                maxLength="30"
                 required
               />
             </div>
@@ -92,25 +92,24 @@ export function Registration() {
 
             <div className="form-group">
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 placeholder="Enter Mobile"
                 value={userNumber}
                 onChange={(e) => updateUserNumber(e)}
-                min="999999999"
-                max="9999999999"
+                pattern="^(?=.*\d)[\d]{10,10}$"
                 required
               />
             </div>
 
             <div className="form-group">
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 placeholder="Enter Adhaar"
                 value={userAdhaar}
                 onChange={(e) => updateUserAdhaar(e)}
-                min="9999999999"
+                pattern="^(?=.*\d)[\d]{12,12}$"
                 required
               />
             </div>
@@ -122,6 +121,7 @@ export function Registration() {
                 placeholder="Enter password"
                 value={userPassword}
                 onChange={(e) => updateUserPassword(e)}
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#%^*])[a-zA-Z\d!@#%^*]{8,}$"
                 required
               />
             </div>
