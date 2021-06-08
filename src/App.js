@@ -11,13 +11,14 @@ import { VehicleList } from "./component/VehicleList";
 import { VehicleBrand } from "./component/VehicleBrand";
 import { VehicleBrandList } from "./component/VehicleBrandList";
 import { HomePage } from "./component/HomePage";
+import { Registration } from "./component/Registration";
 // vehicle
 function App() {
   return (
     <Router>
       {/** */}
       <Switch>
-        <Route path="/home" exact>
+        <Route path="/" exact>
           <HomePage />
         </Route>
         <Route path="/userlogin" exact>
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route path="/adminlogin" exact>
           <AdminLogin />
+        </Route>
+        <Route path="/register" exact>
+          <Registration />
         </Route>
         <Route path="/vehiclebooking" exact>
           <VehicleBooking />
