@@ -10,12 +10,16 @@ import { AdminLogin } from "./component/AdminLogin";
 import { VehicleList } from "./component/VehicleList";
 import { VehicleBrand } from "./component/VehicleBrand";
 import { VehicleBrandList } from "./component/VehicleBrandList";
+import { HomePage } from "./component/HomePage";
 // vehicle
 function App() {
   return (
     <Router>
       {/** */}
       <Switch>
+        <Route path="/home" exact>
+          <HomePage />
+        </Route>
         <Route path="/userlogin" exact>
           <UserLogin />
         </Route>

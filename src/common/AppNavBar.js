@@ -11,10 +11,10 @@ export function AppNavBar() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Nav.Link as={Link} to="/create-employee">
-            Create Employee
+            User Register
           </Nav.Link>
           <Nav.Link as={Link} to="/list-employee">
-            List Employee
+            Enquiry
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
