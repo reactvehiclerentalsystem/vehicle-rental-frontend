@@ -5,10 +5,12 @@ import thunk from "redux-thunk";
 import { UserLoginReducer } from "./UserLoginReducer";
 
 import { UserRegisterReducer } from "./UserRegisterReducer";
+import { VehicleBrandReducer } from "./VehicleBrandReducer";
 
 const rootReducer = combineReducers({
   UserRegister: UserRegisterReducer,
   UserLogin: UserLoginReducer,
+  VehicleBrandR: VehicleBrandReducer,
   // depart : DepartRducer,
   //vechil: VechuileReucer
 });
