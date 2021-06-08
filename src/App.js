@@ -14,6 +14,7 @@ import { HomePage } from "./component/HomePage";
 import { Registration } from "./component/Registration";
 import { GuestUser } from "./component/GuestUser";
 import { VehicleListUser } from "./component/VehicleListUser";
+import { User } from "./component/User";
 // vehicle
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path="/register" exact>
           <Registration />
+        </Route>
+        <Route path="/user" exact>
+          <User />
         </Route>
         <Route path="/vehiclebooking" exact>
           <VehicleBooking />
