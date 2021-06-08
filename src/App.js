@@ -15,6 +15,7 @@ import { Registration } from "./component/Registration";
 import { GuestUser } from "./component/GuestUser";
 import { VehicleListUser } from "./component/VehicleListUser";
 import { User } from "./component/User";
+import { VehicleListRegisteredUser } from "./component/VehicleListRegisteredUser";
 // vehicle
 function App() {
   return (
@@ -53,6 +54,9 @@ function App() {
         </Route>
         <Route path="/vehiclelistuser" exact>
           <VehicleListUser />
+        </Route>
+        <Route path="/vehiclelistreguser" exact>
+          <VehicleListRegisteredUser />
         </Route>
         <Route path="/vehiclebrand" exact>
           <VehicleBrand />

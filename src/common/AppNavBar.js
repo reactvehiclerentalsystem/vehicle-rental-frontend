@@ -37,6 +37,9 @@ export function UserNavBar() {
           <Nav.Link as={Link} to="/vehiclebooking">
             Book Vehicles
           </Nav.Link>
+          <Nav.Link as={Link} to="/user">
+            User
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
