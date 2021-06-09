@@ -30,7 +30,6 @@ export function Vehicle() {
   const updatepicture = (e) => setPicture(e.target.value);
   const updatevehicleBrand = (e) => {
     setVehicleBrand(e.target.value);
-    console.log(e.target.value);
   };
 
   // Used to Initialize :: READ THE DATA FROM API
@@ -58,6 +57,16 @@ export function Vehicle() {
 
     setSuccessOperation(true);
     setTimeout(() => setSuccessOperation(false), 2000);
+
+    setVehicleName("");
+    setVehicleType("");
+    setVehiclePlateNumber("");
+    setVehicleColor("");
+    setVehicleLocation("");
+    setNumberOfSeats("");
+    setDailyPrice("");
+    setPicture("");
+    setVehicleBrand("");
   };
 
   return (
@@ -91,7 +100,7 @@ export function Vehicle() {
           <select
             className="form-control form-select w-100 p-2 mb-2"
             aria-label=".form-select-lg example"
-            // value={vehicleBrand}
+            value={vehicleBrand}
             onChange={(e) => updatevehicleBrand(e)}
           >
             <option selected>Brand Name</option>
