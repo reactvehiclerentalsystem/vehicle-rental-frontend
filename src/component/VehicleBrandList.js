@@ -1,7 +1,19 @@
+import { useEffect } from "react";
 import { Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { AdminNavBar } from "../common/AppNavBar";
+import { getAllBrandAction } from "../redux/VehicleBrandReducer";
 
 export function VehicleBrandList() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    dispatch(getAllBrandAction());
+  }, []);
+
   return (
     <div>
       <AdminNavBar />
@@ -20,19 +32,23 @@ export function VehicleBrandList() {
               </tr>
             </thead>
             <tbody>
-              <td>1</td>
-              <td>Audi</td>
-              <td>False</td>
-              <td>
-                <div className="">
-                  <Button variant="outline-warning" className="w-10">
-                    Edit
-                  </Button>{" "}
-                  <Button variant="outline-danger" className="w-10">
-                    Delete
-                  </Button>
-                </div>
-              </td>
+              {[...state.VehicleBrandR.list].map((item, index) => (
+                <tr key={index}>
+                  <th scope="row">{item.brand_id}</th>
+                  <td>{item.brand_name}</td>
+                  <td>{String(item.deleted)}</td>
+                  <td>
+                    <div className="">
+                      <Button variant="outline-warning" className="w-10">
+                        Edit
+                      </Button>{" "}
+                      <Button variant="outline-danger" className="w-10">
+                        Delete
+                      </Button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
