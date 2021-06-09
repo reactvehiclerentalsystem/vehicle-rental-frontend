@@ -6,6 +6,7 @@ const initState = {
 
 // ACTION TYPES
 const LOGIN_ACTION = "LOGIN_ACTION";
+const ADMIN_LOGIN_ACTION = "ADMIN_LOGIN_ACTION";
 
 // ACTIONS :: Login Action
 export function AdminLoginAction(payload) {
@@ -23,12 +24,12 @@ export function AdminLoginAction(payload) {
         body: JSON.stringify(requestBody),
       });
 
-      const user = await response.json();
+      const admin = await response.json();
 
-      console.log(user);
-      if (user) {
+      console.log(admin);
+      if (admin) {
         // UPDATE THE UI
-        dispatch({ type: LOGIN_ACTION, payload: payload });
+        dispatch({ type: ADMIN_LOGIN_ACTION, payload: payload });
       } else {
         //
       }
@@ -41,8 +42,8 @@ export function AdminLoginAction(payload) {
 // REDUCER LOGIC
 export function AdminLoginReducer(state = initState, action) {
   switch (action.type) {
-    case LOGIN_ACTION:
-      return { ...state, loginAction: true };
+    case ADMIN_LOGIN_ACTION:
+      return { ...state, AdminlLoginAction: true };
     default:
       return state;
   }

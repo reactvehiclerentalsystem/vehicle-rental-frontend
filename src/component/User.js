@@ -14,6 +14,12 @@ export function User() {
           <div className="">
             <input
               type="button"
+              value="Search"
+              className="form-control btn btn-outline-dark m-4 w-75"
+              onClick={() => history.push("/search")}
+            />
+            <input
+              type="button"
               value="Book Vehicles"
               className="form-control btn btn-outline-dark m-4 w-75"
               onClick={() => history.push("/vehiclebooking")}

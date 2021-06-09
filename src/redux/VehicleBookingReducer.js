@@ -31,7 +31,7 @@ export function getAllBookingsAction(payload) {
   // API CALL/BACKEND CALL / REDUX-THUNK IS THERE
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = "http://localhost:8090/bookings/";
+    const url = "http://localhost:8080/bookings/";
 
     // HTTP Client / POSTMAN / SWAGGER
     const response = await fetch(url);

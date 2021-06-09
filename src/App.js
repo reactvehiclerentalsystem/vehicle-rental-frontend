@@ -17,6 +17,7 @@ import { VehicleListUser } from "./component/VehicleListUser";
 import { User } from "./component/User";
 import { Admin } from "./component/Admin";
 import { VehicleListRegisteredUser } from "./component/VehicleListRegisteredUser";
+import { UserVehicleSearch } from "./component/UserVehicleSearch";
 // vehicle
 function App() {
   return (
@@ -43,6 +44,9 @@ function App() {
         </Route>
         <Route path="/admin" exact>
           <Admin />
+        </Route>
+        <Route path="/search" exact>
+          <UserVehicleSearch />
         </Route>
         <Route path="/vehiclebooking" exact>
           <VehicleBooking />

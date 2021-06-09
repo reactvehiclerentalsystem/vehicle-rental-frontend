@@ -9,7 +9,7 @@ const GET_ALL_BRAND = "GET_ALL_BRAND";
 export function VehicleBrandAction(payload) {
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = "http://localhost:8090/api/brand/";
+    const url = "http://localhost:8080/api/brand/";
     const requestBody = { ...payload };
 
     // HTTP Client
