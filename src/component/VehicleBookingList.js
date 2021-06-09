@@ -16,8 +16,8 @@ export const VehicleBookingList = () => {
     <div>
       <UserNavBar />
       <div className="row">
-        <div className=" col-2 col-md-2 d-none d-md-block"></div>
-        <div className="col-12 col-md-8 ">
+        <div className=" col-1 col-md-1 d-none d-md-block"></div>
+        <div className="col-12 col-md-10 ">
           <h3 className="alert alert-secondary">Vehicle Booking List</h3>
 
           <table class="table">
@@ -28,7 +28,7 @@ export const VehicleBookingList = () => {
                 <th scope="col">VEHICLE NAME</th>
                 <th scope="col">BOOKING START DATE</th>
                 <th scope="col">BOOKING END DATE</th>
-                <th scope="col">STATUS</th>
+                <th scope="col">CANCELLATION STATUS</th>
                 <th scope="col">ACTION</th>
               </tr>
             </thead>
@@ -50,7 +50,7 @@ export const VehicleBookingList = () => {
             </tbody>
           </table>
         </div>
-        <div className="col-2 col-md-2 d-none d-md-block"></div>
+        <div className="col-1 col-md-1 d-none d-md-block"></div>
       </div>
     </div>
   );
