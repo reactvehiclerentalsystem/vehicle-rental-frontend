@@ -30,6 +30,9 @@ export const VehicleBooking = () => {
       VehicleBookingAction({
         bookingStartDate,
         bookingEndDate,
+        userInfo: {
+          userName: state.userName,
+        },
         vehicle: {
           vehicleId: vehicle,
         },

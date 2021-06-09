@@ -66,7 +66,7 @@ export function AdminNavBar() {
               Add Vehicle
             </NavDropdown.Item>
             <NavDropdown.Item as={Link} to="/vehiclebrand">
-              Vehicle Brand
+              Add Vehicle Brand
             </NavDropdown.Item>
 
             <NavDropdown.Item as={Link} to="/vehiclebrandlist">

@@ -2,7 +2,10 @@ import { Button } from "react-bootstrap";
 import { UserNavBar } from "../common/AppNavBar";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBookingsAction } from "../redux/VehicleBookingReducer";
+import {
+  VehicleBookingCancelAction,
+  getAllBookingsAction,
+} from "../redux/VehicleBookingReducer";
 
 export const VehicleBookingList = () => {
   const state = useSelector((state) => state);
@@ -11,6 +14,10 @@ export const VehicleBookingList = () => {
   useEffect(() => {
     dispatch(getAllBookingsAction());
   }, []);
+
+  const cancelBooking = (item, index) => {
+    dispatch(VehicleBookingCancelAction(item));
+  };
 
   return (
     <div>
@@ -42,7 +49,11 @@ export const VehicleBookingList = () => {
                   <td>{item.bookingEndDate}</td>
                   <td>{String(item.cancelled)}</td>
 
-                  <Button variant="outline-danger" className="w-5 mt-1">
+                  <Button
+                    variant="outline-danger"
+                    className="w-5 mt-1"
+                    onClick={() => cancelBooking(item, index)}
+                  >
                     Cancel
                   </Button>
                 </tr>

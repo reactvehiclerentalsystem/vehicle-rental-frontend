@@ -4,6 +4,7 @@ const initState = {
 
 // ACTION TYPES
 const VEHICLE_BOOKING = "VEHICLE_BOOKING";
+const VEHICLE_BOOKING_CANCEL = "VEHICLE_BOOKING_CANCEL";
 const GET_ALL_BOOKINGS = "GET_ALL_BOOKINGS";
 
 // ACTIONS :: COmponents are interacting with this action
@@ -30,6 +31,18 @@ export function VehicleBookingAction(payload) {
   };
 }
 
+export function VehicleBookingCancelAction(payload) {
+  //return { type: ENQUIRY_DELETE, payload: payload };
+  return async (dispatch) => {
+    console.log(payload);
+    const url = `http://localhost:8090/bookings/${payload.bookingId}`;
+    await fetch(url, { method: "DELETE" });
+
+    // update the ui.
+    dispatch(getAllBookingsAction());
+  };
+}
+
 export function getAllBookingsAction(payload) {
   // return { type: EMPLOYEE_GET_ALL, payload: payload };
 
@@ -52,6 +65,12 @@ export function VehicleBookingReducer(state = initState, action) {
   switch (action.type) {
     case VEHICLE_BOOKING:
       return { ...state, list: [action.payload, ...state.list] };
+
+    case VEHICLE_BOOKING_CANCEL:
+      const oldList = state.list;
+      oldList.splice(action.payload, 1);
+      console.log("OL", oldList);
+      return { ...state, list: [...oldList] };
 
     case GET_ALL_BOOKINGS:
       // Update the list
