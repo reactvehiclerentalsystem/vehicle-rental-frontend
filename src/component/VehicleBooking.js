@@ -14,6 +14,8 @@ export const VehicleBooking = () => {
   const [bookingEndDate, setbookingEndDate] = useState("");
   const [vehicle, setvehicle] = useState("");
 
+  const [successOperation, setSuccessOperation] = useState(false);
+
   const updatebookingStartDate = (e) => setbookingStartDate(e.target.value);
   const updatebookingEndDate = (e) => setbookingEndDate(e.target.value);
   const updatevehicle = (e) => setvehicle(e.target.value);
@@ -34,6 +36,9 @@ export const VehicleBooking = () => {
       })
     );
 
+    setSuccessOperation(true);
+    setTimeout(() => setSuccessOperation(false), 2000);
+
     setbookingStartDate("");
     setbookingEndDate("");
     setvehicle("");
@@ -51,6 +56,10 @@ export const VehicleBooking = () => {
               <p>Book your dream car!</p>
             </Alert>
           </div>
+
+          {successOperation && (
+            <div className="alert alert-success">Vehicle Booked</div>
+          )}
 
           <div>
             <select

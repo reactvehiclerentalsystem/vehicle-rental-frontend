@@ -9,8 +9,11 @@ const GET_ALL_BOOKINGS = "GET_ALL_BOOKINGS";
 // ACTIONS :: COmponents are interacting with this action
 export function VehicleBookingAction(payload) {
   return async (dispatch) => {
+    const userDetails = sessionStorage.getItem("user");
+    const userList = JSON.parse(userDetails);
+
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = `http://localhost:8090/bookings/vehicle/${payload.vehicle.vehicleId}/user/1
+    const url = `http://localhost:8090/bookings/vehicle/${payload.vehicle.vehicleId}/user/${userList.userId}
     `;
     const requestBody = { ...payload };
     console.log(requestBody);

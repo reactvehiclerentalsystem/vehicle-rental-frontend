@@ -24,8 +24,8 @@ export function UserLoginAction(payload) {
       });
 
       const user = await response.json();
+      sessionStorage.setItem("user", JSON.stringify(user));
 
-      console.log(user);
       if (user) {
         // UPDATE THE UI
         dispatch({ type: LOGIN_ACTION, payload: payload });
