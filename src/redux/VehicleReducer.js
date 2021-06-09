@@ -11,9 +11,11 @@ const GET_VEHICLE_BY_ID = "GET_VEHICLE_BY_ID";
 export function VehicleAction(payload) {
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = "";
+    //console.log(payload);
+    const url = `http://localhost:8090/api/vehicle/${payload.vehicleBrand.brand_id}`;
     const requestBody = { ...payload };
-
+    //console.log(requestBody);
+    //console.log(payload.vehicleBrand.brand_id);
     // HTTP Client
     await fetch(url, {
       method: "POST",

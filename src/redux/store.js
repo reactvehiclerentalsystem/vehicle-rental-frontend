@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   UserLogin: UserLoginReducer,
   VehicleBrandR: VehicleBrandReducer,
   AdminLogin: AdminLoginReducer,
-  VehicleBooking: VehicleBookingReducer,
+  VehicleBookingg: VehicleBookingReducer,
   Vehiclee: VehicleReducer,
   // depart : DepartRducer,
   //vechil: VechuileReucer
