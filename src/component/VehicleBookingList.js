@@ -2,6 +2,10 @@ import { Button } from "react-bootstrap";
 import { UserNavBar } from "../common/AppNavBar";
 
 export const VehicleBookingList = () => {
+  useEffect(() => {
+    dispatch(getAllBookingsAction());
+  }, []);
+
   return (
     <div>
       <UserNavBar />
@@ -14,7 +18,6 @@ export const VehicleBookingList = () => {
             <thead class="table-dark">
               <tr>
                 <th scope="col">#ID</th>
-                <th scope="col">ADDHAR NUMBER</th>
                 <th scope="col">VEHICLE ID</th>
                 <th scope="col">BOOKING START DATE</th>
                 <th scope="col">BOOKING END DATE</th>
@@ -22,10 +25,9 @@ export const VehicleBookingList = () => {
               </tr>
             </thead>
             <tbody>
+              {/** {[...state.VehicleBookingg.list].map((item, index) => ())} */}
               <tr>
-                {/**<th scope="row">{index + 1}</th> */}
                 <th scope="row">1</th>
-                <td>45781</td>
                 <td>5</td>
                 <td>02-05-2021</td>
                 <td>08-05-2021</td>

@@ -45,22 +45,7 @@ export const VehicleBooking = () => {
               <p>Book your dream car!</p>
             </Alert>
           </div>
-          {/** <div>
-            <input
-              type="text"
-              className="form-control mb-2 p-2"
-              placeholder="Enter your Addhar number"
-              pattern="^(?=.*\d)[\d]{12}$"
-            />
-          </div> */}
-          <div>
-            <input
-              type="text"
-              className="form-control mb-2 p-2"
-              placeholder="Enter your id"
-              required
-            />
-          </div>
+
           <div>
             <select
               className="form-control form-select w-100 p-2 mb-2"
@@ -68,8 +53,13 @@ export const VehicleBooking = () => {
             >
               <option selected>Choose your vehicle</option>
               {[...state.Vehiclee.list].map((item, index) => (
+<<<<<<< Updated upstream
                 <option value="1" key={index}>
                   {item.vehicleId}-{item.vehicleName}
+=======
+                <option value={item.vehicleId} key={index}>
+                  {item.vehicleName}
+>>>>>>> Stashed changes
                 </option>
               ))}
             </select>
