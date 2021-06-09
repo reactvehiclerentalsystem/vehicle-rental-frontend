@@ -36,7 +36,7 @@ export function getAllVehiclesAction(payload) {
     // HTTP Client / POSTMAN / SWAGGER
     const response = await fetch(url);
     const vehicleList = await response.json();
-
+    console.log(vehicleList[5].available);
     // Update the UI
     dispatch({ type: GET_ALL_VEHICLES, payload: vehicleList });
   };

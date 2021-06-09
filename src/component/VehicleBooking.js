@@ -63,13 +63,13 @@ export const VehicleBooking = () => {
           </div>
           <div>
             <select
-              class="form-control form-select w-100 p-2 mb-2"
+              className="form-control form-select w-100 p-2 mb-2"
               aria-label=".form-select-lg example"
             >
               <option selected>Choose your vehicle</option>
               {[...state.Vehiclee.list].map((item, index) => (
                 <option value="1" key={index}>
-                  {item.vehicle_id}-{item.vehicle_name}
+                  {item.vehicleId}-{item.vehicleName}
                 </option>
               ))}
             </select>
