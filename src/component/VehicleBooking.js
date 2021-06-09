@@ -12,9 +12,11 @@ export const VehicleBooking = () => {
 
   const [bookingStartDate, setbookingStartDate] = useState("");
   const [bookingEndDate, setbookingEndDate] = useState("");
+  const [vehicle, setvehicle] = useState("");
 
   const updatebookingStartDate = (e) => setbookingStartDate(e.target.value);
   const updatebookingEndDate = (e) => setbookingEndDate(e.target.value);
+  const updatevehicle = (e) => setvehicle(e.target.value);
 
   useEffect(() => {
     dispatch(getAllVehiclesAction());
@@ -26,11 +28,15 @@ export const VehicleBooking = () => {
       VehicleBookingAction({
         bookingStartDate,
         bookingEndDate,
+        vehicle: {
+          vehicleId: vehicle,
+        },
       })
     );
 
     setbookingStartDate("");
     setbookingEndDate("");
+    setvehicle("");
   };
 
   return (
@@ -50,6 +56,9 @@ export const VehicleBooking = () => {
             <select
               className="form-control form-select w-100 p-2 mb-2"
               aria-label=".form-select-lg example"
+              value={vehicle}
+              onChange={(e) => updatevehicle(e)}
+              required
             >
               <option selected>Choose your vehicle</option>
               {[...state.Vehiclee.list].map((item, index) => (
@@ -61,22 +70,29 @@ export const VehicleBooking = () => {
           </div>
 
           <div>
+            <label htmlFor="">Booking Start Date</label>
+
             <input
               type="date"
               className="form-control mb-2 p-2"
               placeholder="Enter the Booking start date"
               value={bookingStartDate}
               onChange={(e) => updatebookingStartDate(e)}
+              min="2021-06-11"
+              max="2021-12-10"
               required
             />
           </div>
           <div className="mb-4">
+            <label htmlFor="">Booking End Date</label>
             <input
               type="date"
               className="form-control p-2"
               placeholder="Enter the Booking end date"
               value={bookingEndDate}
               onChange={(e) => updatebookingEndDate(e)}
+              min="2021-06-11"
+              max="2021-12-10"
               required
             />
           </div>

@@ -10,8 +10,10 @@ const GET_ALL_BOOKINGS = "GET_ALL_BOOKINGS";
 export function VehicleBookingAction(payload) {
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = "";
+    const url = `http://localhost:8090/bookings/vehicle/${payload.vehicle.vehicleId}/user/1
+    `;
     const requestBody = { ...payload };
+    console.log(requestBody);
 
     // HTTP Client
     await fetch(url, {
