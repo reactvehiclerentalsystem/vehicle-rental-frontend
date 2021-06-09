@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import { AdminLoginReducer } from "./AdminLoginReducer";
 import { UserLoginReducer } from "./UserLoginReducer";
 import { UserRegisterReducer } from "./UserRegisterReducer";
+import { UserVehicleSearchReducer } from "./UserVehicleSearchReducer";
 import { VehicleBookingReducer } from "./VehicleBookingReducer";
 import { VehicleBrandReducer } from "./VehicleBrandReducer";
 import { VehicleReducer } from "./VehicleReducer";
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   AdminLogin: AdminLoginReducer,
   VehicleBookingg: VehicleBookingReducer,
   Vehiclee: VehicleReducer,
+  UserVehicleSearch: UserVehicleSearchReducer,
   // depart : DepartRducer,
   //vechil: VechuileReucer
 });

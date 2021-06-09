@@ -34,7 +34,7 @@ export function getAllVehiclesAction(payload) {
   // API CALL/BACKEND CALL / REDUX-THUNK IS THERE
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = "http://localhost:8080/api/vehicle/allVehicles";
+    const url = "http://localhost:8090/api/vehicle/allVehicles";
 
     // HTTP Client / POSTMAN / SWAGGER
     const response = await fetch(url);
@@ -48,7 +48,7 @@ export function getAllVehiclesAction(payload) {
 export function getVehicleByIdAction(payload) {
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = `http://localhost:8080/api/vehicle/${payload.id}`;
+    const url = `http://localhost:8090/api/vehicle/${payload.id}`;
 
     // HTTP Client / POSTMAN / SWAGGER
     const response = await fetch(url);

@@ -43,7 +43,7 @@ export function AdminLoginAction(payload) {
 export function AdminLoginReducer(state = initState, action) {
   switch (action.type) {
     case ADMIN_LOGIN_ACTION:
-      return { ...state, AdminlLoginAction: true };
+      return { ...state, loginAction: true };
     default:
       return state;
   }
