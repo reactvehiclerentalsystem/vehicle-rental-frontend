@@ -53,13 +53,8 @@ export const VehicleBooking = () => {
             >
               <option selected>Choose your vehicle</option>
               {[...state.Vehiclee.list].map((item, index) => (
-<<<<<<< Updated upstream
-                <option value="1" key={index}>
-                  {item.vehicleId}-{item.vehicleName}
-=======
                 <option value={item.vehicleId} key={index}>
                   {item.vehicleName}
->>>>>>> Stashed changes
                 </option>
               ))}
             </select>

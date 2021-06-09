@@ -10,9 +10,11 @@ const GET_ALL_VEHICLES = "GET_ALL_VEHICLES";
 export function VehicleAction(payload) {
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = "";
+    //console.log(payload);
+    const url = `http://localhost:8090/api/vehicle/${payload.vehicleBrand.brand_id}`;
     const requestBody = { ...payload };
-
+    //console.log(requestBody);
+    //console.log(payload.vehicleBrand.brand_id);
     // HTTP Client
     await fetch(url, {
       method: "POST",
@@ -36,12 +38,7 @@ export function getAllVehiclesAction(payload) {
     // HTTP Client / POSTMAN / SWAGGER
     const response = await fetch(url);
     const vehicleList = await response.json();
-<<<<<<< Updated upstream
-    console.log(vehicleList[5].available);
-=======
-    console.log(vehicleList);
 
->>>>>>> Stashed changes
     // Update the UI
     dispatch({ type: GET_ALL_VEHICLES, payload: vehicleList });
   };
