@@ -3,14 +3,19 @@ import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AdminNavBar } from "../common/AppNavBar";
-import { VehicleBrandAction } from "../redux/VehicleBrandReducer";
+import {
+  updateBrandAction,
+  VehicleBrandAction,
+} from "../redux/VehicleBrandReducer";
 
 export function VehicleBrand() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [brand_name, setBrand_name] = useState("");
+  const [brand_name, setBrand_name] = useState(
+    state.VehicleBrandR.refbrand.brand_name
+  );
 
   const updateBrandName = (e) => setBrand_name(e.target.value);
 
@@ -24,10 +29,18 @@ export function VehicleBrand() {
       })
     );
     console.log(state.VehicleBrandR.brand_name);
-    // A2: navigate to another page
-    // history.push("/list-employee");
-
     // reset the form
+    setBrand_name("");
+  };
+
+  const UpdateBrand = (e) => {
+    e.preventDefault();
+    dispatch(
+      updateBrandAction({
+        brand_id: state.VehicleBrandR.refbrand.brand_id,
+        brand_name,
+      })
+    );
     setBrand_name("");
   };
   return (
@@ -47,15 +60,27 @@ export function VehicleBrand() {
                 onChange={(e) => updateBrandName(e)}
               />
             </div>
-            <div className="p-1">
-              <Button
-                variant="outline-success"
-                className="w-100"
-                onClick={(e) => AddBrand(e)}
-              >
-                Add
-              </Button>
-            </div>
+            {state.VehicleBrandR.refbrand.brand_id ? (
+              <div className="p-1">
+                <Button
+                  variant="outline-primary"
+                  className="w-100"
+                  onClick={(e) => UpdateBrand(e)}
+                >
+                  Update
+                </Button>
+              </div>
+            ) : (
+              <div className="p-1">
+                <Button
+                  variant="outline-success"
+                  className="w-100"
+                  onClick={(e) => AddBrand(e)}
+                >
+                  Add
+                </Button>
+              </div>
+            )}
           </div>
           <div className="col-3 col-md-3 d-none d-md-block "></div>
         </div>

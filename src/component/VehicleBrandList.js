@@ -3,7 +3,11 @@ import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { AdminNavBar } from "../common/AppNavBar";
-import { getAllBrandAction } from "../redux/VehicleBrandReducer";
+import {
+  BrandDeleteAction,
+  getAllBrandAction,
+  updateRefBrand,
+} from "../redux/VehicleBrandReducer";
 
 export function VehicleBrandList() {
   const state = useSelector((state) => state);
@@ -13,6 +17,15 @@ export function VehicleBrandList() {
   useEffect(() => {
     dispatch(getAllBrandAction());
   }, []);
+
+  const deleteBrand = (item, index) => {
+    dispatch(BrandDeleteAction(item));
+  };
+
+  const updateBrand = (item, index) => {
+    dispatch(updateRefBrand(item));
+    history.push("/vehiclebrand");
+  };
 
   return (
     <div>
@@ -39,10 +52,18 @@ export function VehicleBrandList() {
                   <td>{String(item.deleted)}</td>
                   <td>
                     <div className="">
-                      <Button variant="outline-warning" className="w-10">
+                      <Button
+                        variant="outline-primary"
+                        className="w-10"
+                        onClick={() => updateBrand(item)}
+                      >
                         Edit
                       </Button>{" "}
-                      <Button variant="outline-danger" className="w-10">
+                      <Button
+                        variant="outline-danger"
+                        className="w-10"
+                        onClick={() => deleteBrand(item, index)}
+                      >
                         Delete
                       </Button>
                     </div>
