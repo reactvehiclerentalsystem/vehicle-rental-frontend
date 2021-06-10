@@ -1,3 +1,29 @@
+.body {
+  height: 100%;
+  z-index: 20;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  overflow: auto;
+  background: linear-gradient(
+    90deg,
+    #78ddfc,
+    rgb(210, 213, 35),
+    hsl(0, 72%, 49%)
+  );
+  background-size: 600% 100%;
+  animation: gradient 5s linear infinite;
+  animation-direction: alternate;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
 .App {
   text-align: center;
 }

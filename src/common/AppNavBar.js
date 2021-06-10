@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export function AppNavBar() {
   return (
-    <Navbar bg="dark" expand="lg" variant="dark">
+    <Navbar bg="dark" expand="lg" variant="dark" sticky="top">
       <Navbar.Brand as={Link} to="/">
         VRS APP
       </Navbar.Brand>
@@ -24,7 +24,7 @@ export function AppNavBar() {
 
 export function UserNavBar() {
   return (
-    <Navbar bg="dark" expand="lg" variant="dark">
+    <Navbar bg="dark" expand="lg" variant="dark" sticky="top">
       <Navbar.Brand as={Link} to="/">
         VRS APP
       </Navbar.Brand>

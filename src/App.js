@@ -21,59 +21,61 @@ import { UserVehicleSearch } from "./component/UserVehicleSearch";
 // vehicle
 function App() {
   return (
-    <Router>
-      {/** */}
-      <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
-        <Route path="/userlogin" exact>
-          <UserLogin />
-        </Route>
-        <Route path="/adminlogin" exact>
-          <AdminLogin />
-        </Route>
-        <Route path="/guestuser" exact>
-          <GuestUser />
-        </Route>
-        <Route path="/register" exact>
-          <Registration />
-        </Route>
-        <Route path="/user" exact>
-          <User />
-        </Route>
-        <Route path="/admin" exact>
-          <Admin />
-        </Route>
-        <Route path="/search" exact>
-          <UserVehicleSearch />
-        </Route>
-        <Route path="/vehiclebooking" exact>
-          <VehicleBooking />
-        </Route>
-        <Route path="/vehiclebookinglist" exact>
-          <VehicleBookingList />
-        </Route>
-        <Route path="/vehicle" exact>
-          <Vehicle />
-        </Route>
-        <Route path="/vehiclelist" exact>
-          <VehicleList />
-        </Route>
-        <Route path="/vehiclelistuser" exact>
-          <VehicleListUser />
-        </Route>
-        <Route path="/vehiclelistreguser" exact>
-          <VehicleListRegisteredUser />
-        </Route>
-        <Route path="/vehiclebrand" exact>
-          <VehicleBrand />
-        </Route>
-        <Route path="/vehiclebrandlist" exact>
-          <VehicleBrandList />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="body" style={{ height: "100vh" }}>
+      <Router>
+        {/** */}
+        <Switch>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
+          <Route path="/userlogin" exact>
+            <UserLogin />
+          </Route>
+          <Route path="/adminlogin" exact>
+            <AdminLogin />
+          </Route>
+          <Route path="/guestuser" exact>
+            <GuestUser />
+          </Route>
+          <Route path="/register" exact>
+            <Registration />
+          </Route>
+          <Route path="/user" exact>
+            <User />
+          </Route>
+          <Route path="/admin" exact>
+            <Admin />
+          </Route>
+          <Route path="/search" exact>
+            <UserVehicleSearch />
+          </Route>
+          <Route path="/vehiclebooking" exact>
+            <VehicleBooking />
+          </Route>
+          <Route path="/vehiclebookinglist" exact>
+            <VehicleBookingList />
+          </Route>
+          <Route path="/vehicle" exact>
+            <Vehicle />
+          </Route>
+          <Route path="/vehiclelist" exact>
+            <VehicleList />
+          </Route>
+          <Route path="/vehiclelistuser" exact>
+            <VehicleListUser />
+          </Route>
+          <Route path="/vehiclelistreguser" exact>
+            <VehicleListRegisteredUser />
+          </Route>
+          <Route path="/vehiclebrand" exact>
+            <VehicleBrand />
+          </Route>
+          <Route path="/vehiclebrandlist" exact>
+            <VehicleBrandList />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

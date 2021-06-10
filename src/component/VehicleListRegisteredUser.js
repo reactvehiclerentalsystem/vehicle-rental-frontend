@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Card, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { UserNavBar } from "../common/AppNavBar";
 import {
@@ -20,47 +21,37 @@ export function VehicleListRegisteredUser() {
   }, []);
 
   return (
-    <div>
+    <div className="mb-4">
       <UserNavBar />
-      <div className="row">
-        <div className=" col-2 col-md-2 d-none d-md-block"></div>
-        <div className="col-12 col-md-8 ">
-          <h3 className="alert alert-secondary">Vehicle List</h3>
-
-          <table className="table">
-            <thead className="table-dark">
-              <tr>
-                <th scope="col">#ID</th>
-                <th scope="col">VEHICLE NAME</th>
-                <th scope="col">VEHICLE TYPE</th>
-                <th scope="col">VEHICLE AVAILABLE</th>
-                <th scope="col">VEHICLE PLATE NUMBER</th>
-                <th scope="col">ACTION</th>
-              </tr>
-            </thead>
-            <tbody>
-              {state.UserVehicleSearch.refVehicle.map((item, index) => (
-                <tr key={index}>
-                  {/**<th scope="row">{index + 1}</th> */}
-                  <th scope="row">{item.vehicleId}</th>
-                  <td>{item.vehicleName}</td>
-                  <td>{item.vehicleType}</td>
-                  <td>{String(item.available)}</td>
-                  <td>{item.vehiclePlateNumber}</td>
-                  <td>
-                    <input
-                      type="button"
-                      value="Detail"
-                      className="btn btn-link"
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="col-2 col-md-2 d-none d-md-block"></div>
-      </div>
+      &nbsp;
+      <h3 className="alert alert-secondary">Vehicle List</h3>
+      <Row xs={1} md={3} className="g-4 p-2">
+        {state.UserVehicleSearch.refVehicle.map((item, index) => (
+          <tr key={index}>
+            {/**<th scope="row">{index + 1}</th> */}
+            <Col className="mb-2">
+              <Card>
+                <Card.Img
+                  variant="top"
+                  src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*"
+                />
+                <Card.Body>
+                  <Card.Title>{item.vehicleName}</Card.Title>
+                  <Card.Text>
+                    This is a longer card with supporting text below as a
+                    natural lead-in to additional content. This content is a
+                    little bit longer.
+                  </Card.Text>
+                </Card.Body>
+                <Card.Body>
+                  <Card.Link href="#">More Details</Card.Link>
+                  <Card.Link href="#">Book Vehicle</Card.Link>
+                </Card.Body>
+              </Card>
+            </Col>
+          </tr>
+        ))}
+      </Row>
     </div>
   );
 }
