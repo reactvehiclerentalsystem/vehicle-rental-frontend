@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +9,7 @@ import { VehicleBookingAction } from "./../redux/VehicleBookingReducer";
 export const VehicleBooking = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+  const formEL = useRef();
 
   const [bookingStartDate, setbookingStartDate] = useState("");
   const [bookingEndDate, setbookingEndDate] = useState("");
@@ -26,25 +27,32 @@ export const VehicleBooking = () => {
 
   const BookVehicle = (e) => {
     e.preventDefault();
-    dispatch(
-      VehicleBookingAction({
-        bookingStartDate,
-        bookingEndDate,
-        userInfo: {
-          userName: state.userName,
-        },
-        vehicle: {
-          vehicleId: vehicle,
-        },
-      })
-    );
+    if (formEL.current.checkValidity() === false) {
+      // hanlde the false case
+      e.preventDefault();
+      e.stopPropagation();
+      formEL.current.classList.add("was-validated");
+    } else {
+      dispatch(
+        VehicleBookingAction({
+          bookingStartDate,
+          bookingEndDate,
+          userInfo: {
+            userName: state.userName,
+          },
+          vehicle: {
+            vehicleId: vehicle,
+          },
+        })
+      );
 
-    setSuccessOperation(true);
-    setTimeout(() => setSuccessOperation(false), 2000);
+      setSuccessOperation(true);
+      setTimeout(() => setSuccessOperation(false), 2000);
 
-    setbookingStartDate("");
-    setbookingEndDate("");
-    setvehicle("");
+      setbookingStartDate("");
+      setbookingEndDate("");
+      setvehicle("");
+    }
   };
 
   return (
@@ -64,58 +72,60 @@ export const VehicleBooking = () => {
             <div className="alert alert-success">Vehicle Booked</div>
           )}
 
-          <div>
-            <select
-              className="form-control form-select w-100 p-2 mb-2"
-              aria-label=".form-select-lg example"
-              value={vehicle}
-              onChange={(e) => updatevehicle(e)}
-              required
-            >
-              <option selected>Choose your vehicle</option>
-              {[...state.Vehiclee.list].map((item, index) => (
-                <option value={item.vehicleId} key={index}>
-                  {item.vehicleName}
-                </option>
-              ))}
-            </select>
-          </div>
+          <form ref={formEL} class="needs-validation" novalidate>
+            <div>
+              <select
+                className="form-control form-select w-100 p-2 mb-2"
+                aria-label=".form-select-lg example"
+                value={vehicle}
+                onChange={(e) => updatevehicle(e)}
+                required
+              >
+                <option selected>Choose your vehicle</option>
+                {[...state.Vehiclee.list].map((item, index) => (
+                  <option value={item.vehicleId} key={index}>
+                    {item.vehicleName}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <div>
-            <label htmlFor="">Booking Start Date</label>
+            <div>
+              <label htmlFor="">Booking Start Date</label>
 
-            <input
-              type="date"
-              className="form-control mb-2 p-2"
-              placeholder="Enter the Booking start date"
-              value={bookingStartDate}
-              onChange={(e) => updatebookingStartDate(e)}
-              min="2021-06-11"
-              max="2021-12-10"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="">Booking End Date</label>
-            <input
-              type="date"
-              className="form-control p-2"
-              placeholder="Enter the Booking end date"
-              value={bookingEndDate}
-              onChange={(e) => updatebookingEndDate(e)}
-              min="2021-06-11"
-              max="2021-12-10"
-              required
-            />
-          </div>
-          <div className="mb-2">
-            <input
-              type="button"
-              className="btn btn-outline-success w-100"
-              value="Book"
-              onClick={(e) => BookVehicle(e)}
-            />
-          </div>
+              <input
+                type="date"
+                className="form-control mb-2 p-2"
+                placeholder="Enter the Booking start date"
+                value={bookingStartDate}
+                onChange={(e) => updatebookingStartDate(e)}
+                min="2021-06-11"
+                max="2021-12-10"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="">Booking End Date</label>
+              <input
+                type="date"
+                className="form-control p-2"
+                placeholder="Enter the Booking end date"
+                value={bookingEndDate}
+                onChange={(e) => updatebookingEndDate(e)}
+                min="2021-06-11"
+                max="2021-12-10"
+                required
+              />
+            </div>
+            <div className="mb-2">
+              <input
+                type="button"
+                className="btn btn-outline-success w-100"
+                value="Book"
+                onClick={(e) => BookVehicle(e)}
+              />
+            </div>
+          </form>
         </div>
         <div className="col-3 col-md-3  d-none d-md-block"></div>
       </div>
