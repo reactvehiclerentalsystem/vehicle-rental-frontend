@@ -72,7 +72,7 @@ export function AdminLogin() {
               className="form-control mb-2"
               placeholder="Enter Password"
               onChange={(e) => updatePassword(e)}
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#%^*])[a-zA-Z\d!@#%^*]{8,}$"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#%^*])[a-zA-Z\d!@#%^*]{4,}$"
               required
             />
             <input
