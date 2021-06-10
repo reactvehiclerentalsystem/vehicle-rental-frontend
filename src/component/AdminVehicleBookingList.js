@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { UserNavBar } from "../common/AppNavBar";
+import { AdminNavBar } from "../common/AppNavBar";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,7 +7,7 @@ import {
   getAllBookingsAction,
 } from "../redux/VehicleBookingReducer";
 
-export const VehicleBookingList = () => {
+export const AdminVehicleBookingList = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ export const VehicleBookingList = () => {
 
   return (
     <div>
-      <UserNavBar />
+      <AdminNavBar />
       <div className="row">
         <div className=" col-1 col-md-1 d-none d-md-block"></div>
         <div className="col-12 col-md-10 ">

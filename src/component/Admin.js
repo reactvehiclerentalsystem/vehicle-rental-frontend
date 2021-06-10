@@ -18,23 +18,12 @@ export function Admin() {
               className="form-control btn btn-outline-dark m-4 w-75"
               onClick={() => history.push("/vehiclebrand")}
             />
-            <input
-              type="button"
-              value="View Brands"
-              className="form-control btn btn-outline-dark m-4 w-75"
-              onClick={() => history.push("/vehiclebrandlist")}
-            />
+
             <input
               type="button"
               value="Add New Vehicle"
               className="form-control btn btn-outline-dark m-4 w-75"
               onClick={() => history.push("/vehicle")}
-            />
-            <input
-              type="button"
-              value="View Vehicles"
-              className="form-control btn btn-outline-dark m-4 w-75"
-              onClick={() => history.push("/vehiclelist")}
             />
           </div>
         </div>

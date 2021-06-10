@@ -58,19 +58,20 @@ export function AdminNavBar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto mr-5 ">
+          <Nav.Link as={Link} to="/admin">
+            My Admin
+          </Nav.Link>
           <NavDropdown title="More Options" id="basic-nav-dropdown">
             <NavDropdown.Item as={Link} to="/vehiclelist">
               Vehicle List
             </NavDropdown.Item>
-            <NavDropdown.Item as={Link} to="/vehicle">
-              Add Vehicle
-            </NavDropdown.Item>
-            <NavDropdown.Item as={Link} to="/vehiclebrand">
-              Add Vehicle Brand
-            </NavDropdown.Item>
 
             <NavDropdown.Item as={Link} to="/vehiclebrandlist">
               Brand List
+            </NavDropdown.Item>
+
+            <NavDropdown.Item as={Link} to="/adminbookinglist">
+              Vehicle Booking List
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
