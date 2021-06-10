@@ -85,6 +85,9 @@ export function AdminNavBar() {
             <NavDropdown.Item as={Link} to="/adminbookinglist">
               Vehicle Booking List
             </NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/dashboard">
+              Dashboard
+            </NavDropdown.Item>
           </NavDropdown>
           <Nav.Link as={Link} to="/">
             Log Out

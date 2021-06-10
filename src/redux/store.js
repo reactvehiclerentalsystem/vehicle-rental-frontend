@@ -10,6 +10,7 @@ import { VehicleBookingReducer } from "./VehicleBookingReducer";
 import { VehicleBrandReducer } from "./VehicleBrandReducer";
 import { VehicleReducer } from "./VehicleReducer";
 import { GuestVehicleReducer } from "./GuestVehicleReducer";
+import { DashboardReducer } from "./DashboardReducer";
 
 const rootReducer = combineReducers({
   UserRegister: UserRegisterReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   Vehiclee: VehicleReducer,
   UserVehicleSearch: UserVehicleSearchReducer,
   guestList: GuestVehicleReducer,
+  dashboard: DashboardReducer,
   // depart : DepartRducer,
   //vechil: VechuileReucer
 });
