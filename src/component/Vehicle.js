@@ -126,8 +126,8 @@ export function Vehicle() {
         <div className="col-12 col-md-6">
           <h3 className="alert alert-secondary">
             {state.Vehiclee.refvehicle.vehicleId
-              ? "Update enquiry"
-              : "Create Enquiry"}
+              ? "Update Vehicle"
+              : "Add Vehicle"}
           </h3>
 
           {successOperation && (
