@@ -50,9 +50,8 @@ export function VehicleList() {
                   <Card.Body>
                     <Card.Title>{item.vehicleName}</Card.Title>
                     <Card.Text>
-                      This is a longer card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
+                      Everything in life is somewhere else, and you get there in
+                      a car.
                     </Card.Text>
                   </Card.Body>
                   <Card.Body>

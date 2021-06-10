@@ -132,15 +132,19 @@ export function UserVehicleSearch() {
       </div>
       <br />
       <div>
-        <Row xs={1} md={2} className="g-4">
+        <Row xs={1} md={3} className="g-4 p-2">
           {state.UserVehicleSearch.refVehicle.map((item, index) => (
             <tr key={index}>
               {/**<th scope="row">{index + 1}</th> */}
-              <Col>
+              <Col className="mb-2">
                 <Card>
                   <Card.Img variant="top" src={item.picture} />
                   <Card.Body>
                     <Card.Title>{item.vehicleName}</Card.Title>
+                    <Card.Text>
+                      Everything in life is somewhere else, and you get there in
+                      a car.
+                    </Card.Text>
                   </Card.Body>
                   <Card.Body>
                     <Button onClick={() => getById(item)}> More Details</Button>

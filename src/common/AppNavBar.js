@@ -52,6 +52,9 @@ export function UserNavBar() {
           <Nav.Link as={Link} to="/vehiclelistreguser">
             User
           </Nav.Link>
+          <Nav.Link as={Link} to="/">
+            Log Out
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
@@ -83,6 +86,9 @@ export function AdminNavBar() {
               Vehicle Booking List
             </NavDropdown.Item>
           </NavDropdown>
+          <Nav.Link as={Link} to="/">
+            Log Out
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
