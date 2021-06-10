@@ -60,18 +60,18 @@ export function VehicleList() {
                       value="Detail"
                       className="btn btn-outline-primary"
                     />
-                    /
+
                     <input
                       type="button"
                       value="Edit"
-                      className="btn btn-outline-warning"
+                      className="btn btn-outline-warning ml-1"
                       onClick={() => updateVehicle(item)}
                     />
-                    /
+
                     <input
                       type="button"
                       value="Delete"
-                      className="btn btn-outline-danger"
+                      className="btn btn-outline-danger ml-1"
                       onClick={() => deleteVehicle(item, index)}
                     />
                   </td>
