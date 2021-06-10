@@ -32,7 +32,6 @@ export function VehicleBookingAction(payload) {
 }
 
 export function VehicleBookingCancelAction(payload) {
-  //return { type: ENQUIRY_DELETE, payload: payload };
   return async (dispatch) => {
     console.log(payload);
     const url = `http://localhost:8090/bookings/${payload.bookingId}`;

@@ -1,7 +1,7 @@
 import { UserNavBar } from "../common/AppNavBar";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   getSpecVehiclesAction,
   updateRefVehicle,
@@ -14,6 +14,7 @@ export function UserVehicleSearch() {
   const history = useHistory();
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+  const formEL = useRef();
 
   const [vehicleName, setVehicleName] = useState("");
   const [vehicleType, setVehicleType] = useState("");
@@ -29,25 +30,30 @@ export function UserVehicleSearch() {
 
   const SearchVehicle = (e) => {
     e.preventDefault();
+    if (formEL.current.checkValidity() === false) {
+      // hanlde the false case
+      e.preventDefault();
+      e.stopPropagation();
+      formEL.current.classList.add("was-validated");
+    } else {
+      dispatch(
+        getSpecVehiclesAction({
+          vehicleName,
+          vehicleType,
+          vehicleColor,
+          numberOfSeats,
+          vehicleLocation,
+        })
+      );
 
-    dispatch(
-      getSpecVehiclesAction({
-        vehicleName,
-        vehicleType,
-        vehicleColor,
-        numberOfSeats,
-        vehicleLocation,
-      })
-    );
+      console.log(state.UserVehicleSearch.refVehicle);
 
-    console.log(state.UserVehicleSearch.refVehicle);
-
-    setVehicleName("");
-    setVehicleType("");
-    setVehicleColor("");
-    setVehicleLocation("");
-    setNumberOfSeats("");
-
+      setVehicleName("");
+      setVehicleType("");
+      setVehicleColor("");
+      setVehicleLocation("");
+      setNumberOfSeats("");
+    }
     // history.push("/vehiclelistreguser");
   };
 
@@ -75,13 +81,14 @@ export function UserVehicleSearch() {
               value="Search All"
               onClick={() => history.push("/vehiclelistreguser")}
             />
-            <form>
+            <form ref={formEL} class="needs-validation" novalidate>
               <input
                 type="text"
                 className="form-control mb-4 p-1"
                 placeholder="Enter Name"
                 value={vehicleName}
                 onChange={(e) => updatevehicleName(e)}
+                pattern="^[A-Z].*"
                 required
               />
               <input
@@ -90,6 +97,7 @@ export function UserVehicleSearch() {
                 placeholder="Enter Type"
                 value={vehicleType}
                 onChange={(e) => updatevehicleType(e)}
+                pattern="^[A-Z].*"
                 required
               />
               <input
@@ -98,6 +106,7 @@ export function UserVehicleSearch() {
                 placeholder="Enter Color"
                 value={vehicleColor}
                 onChange={(e) => updatevehicleColor(e)}
+                pattern="^[A-Z].*"
                 required
               />
               <input
@@ -106,17 +115,19 @@ export function UserVehicleSearch() {
                 placeholder="Enter Number Of Seats"
                 value={numberOfSeats}
                 onChange={(e) => updatenumberOfSeats(e)}
+                pattern="\d"
+                required
+              />
+              <input
+                type="text"
+                className="form-control mb-4 p-1"
+                placeholder="Enter Location"
+                value={vehicleLocation}
+                onChange={(e) => updatevehicleLocation(e)}
+                pattern="^[A-Z].*"
                 required
               />
             </form>
-            <input
-              type="text"
-              className="form-control mb-4 p-1"
-              placeholder="Enter Location"
-              value={vehicleLocation}
-              onChange={(e) => updatevehicleLocation(e)}
-              required
-            />
             <div>
               <input
                 type="button"
