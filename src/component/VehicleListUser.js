@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { AppNavBar } from "../common/AppNavBar";
+import { guestVehiclesAction } from "../redux/GuestVehicleReducer";
 import { updateRefVehicle } from "../redux/UserVehicleSearchReducer";
 import { getAllVehiclesAction } from "../redux/VehicleReducer";
 
@@ -9,12 +10,8 @@ export function VehicleListUser() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const updateRefObj = () => {
-    dispatch(updateRefVehicle({}));
-  };
-
   useEffect(() => {
-    dispatch(getAllVehiclesAction());
+    dispatch(guestVehiclesAction());
   }, []);
 
   return (
@@ -23,7 +20,7 @@ export function VehicleListUser() {
       &nbsp;
       <h3 className="alert alert-secondary">Vehicle List</h3>
       <Row xs={1} md={3} className="g-4 p-2">
-        {state.UserVehicleSearch.refVehicle.map((item, index) => (
+        {state.guestList.list.map((item, index) => (
           <tr key={index}>
             {/**<th scope="row">{index + 1}</th> */}
             <Col className="mb-2">
@@ -42,7 +39,7 @@ export function VehicleListUser() {
                 </Card.Body>
                 <Card.Body>
                   <Card.Link href="#">More Details</Card.Link>
-                  <Card.Link href="#">Book Vehicle</Card.Link>
+                  <Card.Link href="#">Register For Booking</Card.Link>
                 </Card.Body>
               </Card>
             </Col>
