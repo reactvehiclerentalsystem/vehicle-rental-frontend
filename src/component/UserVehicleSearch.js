@@ -1,11 +1,14 @@
 import { UserNavBar } from "../common/AppNavBar";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import {
   getSpecVehiclesAction,
   updateRefVehicle,
+  viewVehicleById,
 } from "../redux/UserVehicleSearchReducer";
+import { Button, Card, Col, Row } from "react-bootstrap";
+import { VehicleModal } from "./VehicleModal";
 
 export function UserVehicleSearch() {
   const history = useHistory();
@@ -51,6 +54,11 @@ export function UserVehicleSearch() {
   const updateRefObj = () => {
     dispatch(updateRefVehicle({}));
   };
+
+  const getById = (item) => {
+    dispatch(viewVehicleById(item));
+  };
+
   return (
     <div>
       <UserNavBar />
@@ -124,45 +132,34 @@ export function UserVehicleSearch() {
       </div>
       <br />
       <div>
-        <div className="row">
-          <div className=" col-2 col-md-2 d-none d-md-block"></div>
-          <div className="col-12 col-md-8 ">
-            <h3 className="alert alert-secondary">Vehicle List</h3>
+        <Row xs={1} md={2} className="g-4">
+          {state.UserVehicleSearch.refVehicle.map((item, index) => (
+            <tr key={index}>
+              {/**<th scope="row">{index + 1}</th> */}
+              <Col>
+                <Card>
+                  <Card.Img variant="top" src={item.picture} />
+                  <Card.Body>
+                    <Card.Title>{item.vehicleName}</Card.Title>
+                  </Card.Body>
+                  <Card.Body>
+                    <Button onClick={() => getById(item)}> More Details</Button>
 
-            <table className="table">
-              <thead className="table-dark">
-                <tr>
-                  <th scope="col">#ID</th>
-                  <th scope="col">VEHICLE NAME</th>
-                  <th scope="col">VEHICLE TYPE</th>
-                  <th scope="col">VEHICLE LOCATION</th>
-                  <th scope="col">VEHICLE PLATE NUMBER</th>
-                  <th scope="col">ACTION</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[...state.UserVehicleSearch.refVehicle].map((item, index) => (
-                  <tr key={index}>
-                    <th scope="row">{item.vehicleId}</th>
-                    <td>{item.vehicleName}</td>
-                    <td>{item.vehicleType}</td>
-                    <td>{item.vehicleLocation}</td>
-                    <td>{item.vehiclePlateNumber}</td>
-                    <td>
-                      <input
-                        type="button"
-                        value="Detail"
-                        className="btn btn-link"
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="col-2 col-md-2 d-none d-md-block"></div>
-        </div>
+                    <Button
+                      as={Link}
+                      to="/vehiclebooking"
+                      className="ml-2 rounded"
+                    >
+                      Book Vehicle
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </tr>
+          ))}
+        </Row>
       </div>
+      <VehicleModal />
     </div>
   );
 }

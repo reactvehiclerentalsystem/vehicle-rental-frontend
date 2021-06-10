@@ -10,7 +10,7 @@ import {
   updateRefVehicle,
   VehicleDeleteAction,
 } from "../redux/VehicleReducer";
-import { VehicleModal } from "./VehicleModal";
+import { AdminVehicleModal } from "./AdminVehicleModal";
 import { viewVehicleById } from "../redux/UserVehicleSearchReducer";
 
 export function VehicleList() {
@@ -81,7 +81,7 @@ export function VehicleList() {
             </tr>
           ))}
         </Row>
-        <VehicleModal />
+        <AdminVehicleModal />
       </div>
     </div>
   );

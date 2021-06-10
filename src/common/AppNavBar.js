@@ -16,6 +16,15 @@ export function AppNavBar() {
           <Nav.Link as={Link} to="/list-employee">
             Enquiry
           </Nav.Link>
+          <NavDropdown title="Login" id="basic-nav-dropdown">
+            <NavDropdown.Item as={Link} to="/userlogin">
+              User
+            </NavDropdown.Item>
+
+            <NavDropdown.Item as={Link} to="/adminlogin">
+              Admin
+            </NavDropdown.Item>
+          </NavDropdown>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
@@ -40,7 +49,7 @@ export function UserNavBar() {
           <Nav.Link as={Link} to="/vehiclebooking">
             Book Vehicles
           </Nav.Link>
-          <Nav.Link as={Link} to="/user">
+          <Nav.Link as={Link} to="/vehiclelistreguser">
             User
           </Nav.Link>
         </Nav>

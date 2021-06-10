@@ -5,7 +5,7 @@ import {
   viewRefVehicle,
 } from "../redux/UserVehicleSearchReducer";
 
-export function VehicleModal() {
+export function AdminVehicleModal() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -41,7 +41,7 @@ export function VehicleModal() {
             Location - {String(state.UserVehicleSearch.ref.vehicleLocation)}
           </ListGroup.Item>
           <ListGroup.Item>
-            Available Status - {String(state.UserVehicleSearch.ref.available)}
+            Deleted Status - {String(state.UserVehicleSearch.ref.deleted)}
           </ListGroup.Item>
         </ListGroup>
       </Modal.Body>

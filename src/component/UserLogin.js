@@ -34,7 +34,7 @@ export const UserLogin = () => {
   };
 
   if (state.UserLogin.loginAction === true) {
-    history.push("/user");
+    history.push("/vehiclelistreguser");
 
     return <div></div>;
   }
