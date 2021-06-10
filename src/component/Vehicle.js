@@ -2,21 +2,37 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AdminNavBar } from "../common/AppNavBar";
 import { getAllBrandAction } from "../redux/VehicleBrandReducer";
-import { VehicleAction } from "./../redux/VehicleReducer";
+import { updateVehicleAction, VehicleAction } from "./../redux/VehicleReducer";
 
 export function Vehicle() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const [vehicleName, setVehicleName] = useState("");
-  const [vehicleType, setVehicleType] = useState("");
-  const [vehiclePlateNumber, setVehiclePlateNumber] = useState("");
-  const [vehicleColor, setVehicleColor] = useState("");
-  const [vehicleLocation, setVehicleLocation] = useState("");
-  const [numberOfSeats, setNumberOfSeats] = useState("");
-  const [dailyPrice, setDailyPrice] = useState("");
-  const [picture, setPicture] = useState("");
-  const [vehicleBrand, setVehicleBrand] = useState("");
+  const [vehicleName, setVehicleName] = useState(
+    state.Vehiclee.refvehicle.vehicleName
+  );
+  const [vehicleType, setVehicleType] = useState(
+    state.Vehiclee.refvehicle.vehicleType
+  );
+  const [vehiclePlateNumber, setVehiclePlateNumber] = useState(
+    state.Vehiclee.refvehicle.vehiclePlateNumber
+  );
+  const [vehicleColor, setVehicleColor] = useState(
+    state.Vehiclee.refvehicle.vehicleColor
+  );
+  const [vehicleLocation, setVehicleLocation] = useState(
+    state.Vehiclee.refvehicle.vehicleLocation
+  );
+  const [numberOfSeats, setNumberOfSeats] = useState(
+    state.Vehiclee.refvehicle.numberOfSeats
+  );
+  const [dailyPrice, setDailyPrice] = useState(
+    state.Vehiclee.refvehicle.dailyPrice
+  );
+  const [picture, setPicture] = useState(state.Vehiclee.refvehicle.picture);
+  const [vehicleBrand, setVehicleBrand] = useState(
+    state.Vehiclee.refvehicle.vehicleBrand
+  );
 
   const [successOperation, setSuccessOperation] = useState(false);
 
@@ -69,13 +85,50 @@ export function Vehicle() {
     setVehicleBrand("");
   };
 
+  const updateVehicleDetails = (e) => {
+    e.preventDefault();
+    dispatch(
+      updateVehicleAction({
+        vehicleId: state.Vehiclee.refvehicle.vehicleId,
+        vehicleName,
+        vehicleType,
+        vehiclePlateNumber,
+        vehicleColor,
+        vehicleLocation,
+        numberOfSeats,
+        dailyPrice,
+        picture,
+        vehicleBrand: {
+          brand_id: vehicleBrand,
+        },
+      })
+    );
+
+    setSuccessOperation(true);
+    setTimeout(() => setSuccessOperation(false), 2000);
+
+    setVehicleName("");
+    setVehicleType("");
+    setVehiclePlateNumber("");
+    setVehicleColor("");
+    setVehicleLocation("");
+    setNumberOfSeats("");
+    setDailyPrice("");
+    setPicture("");
+    setVehicleBrand("");
+  };
+
   return (
     <div>
       <AdminNavBar />
       <div className="row">
         <div className="col-3 col-md-3 d-none d-md-block"></div>
         <div className="col-12 col-md-6">
-          <h3 className="alert alert-secondary">Add vehicle</h3>
+          <h3 className="alert alert-secondary">
+            {state.Vehiclee.refvehicle.vehicleId
+              ? "Update enquiry"
+              : "Create Enquiry"}
+          </h3>
 
           {successOperation && (
             <div className="alert alert-success">Vehicle Added</div>
@@ -158,12 +211,21 @@ export function Vehicle() {
             onChange={(e) => updatepicture(e)}
             required
           />
-          <input
-            type="button"
-            className="btn btn-outline-success w-100"
-            value="Add Vehicle"
-            onClick={(e) => AddVehicle(e)}
-          />
+          {state.Vehiclee.refvehicle.vehicleId ? (
+            <input
+              type="button"
+              className="btn btn-outline-success w-100"
+              value="Update Vehicle"
+              onClick={(e) => updateVehicleDetails(e)}
+            />
+          ) : (
+            <input
+              type="button"
+              className="btn btn-outline-success w-100"
+              value="Add Vehicle"
+              onClick={(e) => AddVehicle(e)}
+            />
+          )}
         </div>
         <div className="col-3 col-md-3  d-none d-md-block"></div>
       </div>

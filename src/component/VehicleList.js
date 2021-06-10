@@ -1,15 +1,30 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { AdminNavBar } from "../common/AppNavBar";
-import { getAllVehiclesAction } from "../redux/VehicleReducer";
+import {
+  getAllVehiclesAction,
+  updateRefVehicle,
+  VehicleDeleteAction,
+} from "../redux/VehicleReducer";
 
 export function VehicleList() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getAllVehiclesAction());
   }, []);
+
+  const deleteVehicle = (item, index) => {
+    dispatch(VehicleDeleteAction(item));
+  };
+
+  const updateVehicle = (item, index) => {
+    dispatch(updateRefVehicle(item));
+    history.push("/vehicle");
+  };
 
   return (
     <div>
@@ -26,7 +41,7 @@ export function VehicleList() {
                 <th scope="col">VEHICLE NAME</th>
                 <th scope="col">VEHICLE TYPE</th>
                 <th scope="col">VEHICLE BRAND</th>
-                <th scope="col">VEHICLE AVAILABLE</th>
+                <th scope="col">VEHICLE DELETE</th>
                 <th scope="col">ACTION</th>
               </tr>
             </thead>
@@ -38,7 +53,7 @@ export function VehicleList() {
                   <td>{item.vehicleName}</td>
                   <td>{item.vehicleType}</td>
                   <td>Maruti</td>
-                  <td>{String(item.available)}</td>
+                  <td>{String(item.deleted)}</td>
                   <td>
                     <input
                       type="button"
@@ -50,12 +65,14 @@ export function VehicleList() {
                       type="button"
                       value="Edit"
                       className="btn btn-link"
+                      onClick={() => updateVehicle(item)}
                     />
                     /
                     <input
                       type="button"
                       value="Delete"
                       className="btn btn-link text-danger"
+                      onClick={() => deleteVehicle(item, index)}
                     />
                   </td>
                 </tr>

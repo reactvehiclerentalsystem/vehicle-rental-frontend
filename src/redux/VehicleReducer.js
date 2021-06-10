@@ -1,11 +1,16 @@
 const initState = {
   list: [],
+  refvehicle: {},
 };
 
 // ACTION TYPES
 const ADD_VEHICLE = "ADD_VEHICLE";
 const GET_ALL_VEHICLES = "GET_ALL_VEHICLES";
 const GET_VEHICLE_BY_ID = "GET_VEHICLE_BY_ID";
+const VEHICLE_DELETE = "VEHICLE_DELETE";
+const VEHICLE_UPDATE = "VEHICLE_UPDATE";
+
+const REF_VEHICLE = "REF_VEHICLE";
 
 // ACTIONS :: COmponents are interacting with this action
 export function VehicleAction(payload) {
@@ -59,6 +64,39 @@ export function getVehicleByIdAction(payload) {
   };
 }
 
+export function VehicleDeleteAction(payload) {
+  //return { type: ENQUIRY_DELETE, payload: payload };
+  return async (dispatch) => {
+    console.log(payload);
+    const url = `http://localhost:8090/api/vehicle/${payload.vehicleId}`;
+    await fetch(url, { method: "DELETE" });
+
+    // update the ui.
+    dispatch(getAllVehiclesAction());
+  };
+}
+
+export function updateVehicleAction(payload) {
+  //return { type: ENQUIRY_UPDATE, payload: payload };
+  return async (dispatch) => {
+    // WE HV TO CALL THE SPRINT1 / SPRING BOOT
+    const url = `http://localhost:8090/api/vehicle/${payload.vehicleId}`;
+    const requestBody = { ...payload };
+
+    await fetch(url, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody),
+    });
+
+    // update the ui.
+    dispatch(updateRefVehicle({}));
+  };
+}
+export function updateRefVehicle(payload) {
+  return { type: REF_VEHICLE, payload: payload };
+}
+
 // REDUCER LOGIC
 export function VehicleReducer(state = initState, action) {
   switch (action.type) {
@@ -70,6 +108,15 @@ export function VehicleReducer(state = initState, action) {
       return { ...state, list: action.payload };
     case GET_VEHICLE_BY_ID:
       return { ...state, list: action.payload };
+    case VEHICLE_DELETE:
+      const oldList = state.list;
+      oldList.splice(action.payload, 1);
+      console.log("OL", oldList);
+      return { ...state, list: [...oldList] };
+    case VEHICLE_UPDATE:
+      return state;
+    case REF_VEHICLE:
+      return { ...state, refvehicle: action.payload };
 
     default:
       return state;
