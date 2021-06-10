@@ -1,11 +1,13 @@
 const initState = {
   list: [],
   refVehicle: [],
+  ref: {},
 };
 
 const GET_SPEC_VEHICLES = "GET_SPEC_VEHICLES";
 const GET_ALL_VEHICLES = "GET_ALL_VEHICLES";
 const REF_VEHICLE = "REF_VEHICLE";
+const REF = "REF";
 
 export function getSpecVehiclesAction(payload) {
   // return { type: EMPLOYEE_GET_ALL, payload: payload };
@@ -46,8 +48,23 @@ export function getAllVehiclesAction(payload) {
   };
 }
 
+export function viewVehicleById(payload) {
+  return async (dispatch) => {
+    const url = `http://localhost:8090/api/vehicle/${payload.vehicleId}`;
+    const response = await fetch(url);
+    const userObj = await response.json();
+    console.log(userObj);
+
+    dispatch(viewRefVehicle(userObj));
+  };
+}
+
 export function updateRefVehicle(payload) {
   return { type: REF_VEHICLE, payload: payload };
+}
+
+export function viewRefVehicle(payload) {
+  return { type: REF, payload: payload };
 }
 
 export function UserVehicleSearchReducer(state = initState, action) {
@@ -60,6 +77,8 @@ export function UserVehicleSearchReducer(state = initState, action) {
       return { ...state, list: action.payload };
     case REF_VEHICLE:
       return { ...state, refVehicle: action.payload };
+    case REF:
+      return { ...state, ref: action.payload };
     default:
       return state;
   }

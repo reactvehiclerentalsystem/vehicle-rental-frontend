@@ -1,12 +1,16 @@
 import { useEffect } from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { UserNavBar } from "../common/AppNavBar";
 import {
   getAllVehiclesAction,
   getSpecVehiclesAction,
   updateRefVehicle,
+  viewVehicleById,
 } from "../redux/UserVehicleSearchReducer";
+import { getVehicleByIdAction } from "../redux/VehicleReducer";
+import { VehicleModal } from "./VehicleModal";
 
 export function VehicleListRegisteredUser() {
   const state = useSelector((state) => state);
@@ -20,6 +24,10 @@ export function VehicleListRegisteredUser() {
     dispatch(getAllVehiclesAction());
   }, []);
 
+  const getById = (item) => {
+    dispatch(viewVehicleById(item));
+  };
+
   return (
     <div className="mb-4">
       <UserNavBar />
@@ -31,10 +39,7 @@ export function VehicleListRegisteredUser() {
             {/**<th scope="row">{index + 1}</th> */}
             <Col className="mb-2">
               <Card>
-                <Card.Img
-                  variant="top"
-                  src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*"
-                />
+                <Card.Img variant="top" src={item.picture} />
                 <Card.Body>
                   <Card.Title>{item.vehicleName}</Card.Title>
                   <Card.Text>
@@ -44,14 +49,22 @@ export function VehicleListRegisteredUser() {
                   </Card.Text>
                 </Card.Body>
                 <Card.Body>
-                  <Card.Link href="#">More Details</Card.Link>
-                  <Card.Link href="#">Book Vehicle</Card.Link>
+                  <Button onClick={() => getById(item)}> More Details</Button>
+
+                  <Button
+                    as={Link}
+                    to="/vehiclebooking"
+                    className="ml-2 rounded"
+                  >
+                    Book Vehicle
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
           </tr>
         ))}
       </Row>
+      <VehicleModal />
     </div>
   );
 }

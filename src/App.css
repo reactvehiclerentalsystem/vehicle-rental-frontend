@@ -12,8 +12,6 @@
     hsl(0, 72%, 49%)
   );
   background-size: 600% 100%;
-  animation: gradient 5s linear infinite;
-  animation-direction: alternate;
 }
 @keyframes gradient {
   0% {

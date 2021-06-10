@@ -1,10 +1,15 @@
 import { useEffect } from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Row, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { AppNavBar } from "../common/AppNavBar";
 import { guestVehiclesAction } from "../redux/GuestVehicleReducer";
-import { updateRefVehicle } from "../redux/UserVehicleSearchReducer";
+import {
+  updateRefVehicle,
+  viewVehicleById,
+} from "../redux/UserVehicleSearchReducer";
 import { getAllVehiclesAction } from "../redux/VehicleReducer";
+import { VehicleModal } from "./VehicleModal";
 
 export function VehicleListUser() {
   const state = useSelector((state) => state);
@@ -13,6 +18,10 @@ export function VehicleListUser() {
   useEffect(() => {
     dispatch(guestVehiclesAction());
   }, []);
+
+  const getById = (item) => {
+    dispatch(viewVehicleById(item));
+  };
 
   return (
     <div className="mb-4">
@@ -25,10 +34,7 @@ export function VehicleListUser() {
             {/**<th scope="row">{index + 1}</th> */}
             <Col className="mb-2">
               <Card>
-                <Card.Img
-                  variant="top"
-                  src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*"
-                />
+                <Card.Img variant="top" src={item.picture} />
                 <Card.Body>
                   <Card.Title>{item.vehicleName}</Card.Title>
                   <Card.Text>
@@ -38,14 +44,18 @@ export function VehicleListUser() {
                   </Card.Text>
                 </Card.Body>
                 <Card.Body>
-                  <Card.Link href="#">More Details</Card.Link>
-                  <Card.Link href="#">Register For Booking</Card.Link>
+                  <Button onClick={() => getById(item)}> More Details</Button>
+
+                  <Button as={Link} to="/register" className="ml-2 rounded">
+                    Register For Booking
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
           </tr>
         ))}
       </Row>
+      <VehicleModal />
     </div>
   );
 }
