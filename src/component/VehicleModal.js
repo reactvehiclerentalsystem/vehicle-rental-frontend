@@ -18,15 +18,31 @@ export function VehicleModal() {
       onHide={() => updateRefObj()}
     >
       <Modal.Header closeButton>
-        <Modal.Title>{}</Modal.Title>
+        <Modal.Title>Car Details</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <ListGroup>
           <ListGroup.Item>
             Name - {state.UserVehicleSearch.ref.vehicleName}
           </ListGroup.Item>
-          <ListGroup.Item>User Name - {}</ListGroup.Item>
-          <ListGroup.Item>Email - {}</ListGroup.Item>
+          <ListGroup.Item>
+            Type - {state.UserVehicleSearch.ref.vehicleType}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            Seats - {state.UserVehicleSearch.ref.numberOfSeats}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            Daily Price - {state.UserVehicleSearch.ref.dailyPrice}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            Plate Number - {state.UserVehicleSearch.ref.vehiclePlateNumber}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            Location - {String(state.UserVehicleSearch.ref.vehicleLocation)}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            Deleted Status - {String(state.UserVehicleSearch.ref.deleted)}
+          </ListGroup.Item>
         </ListGroup>
       </Modal.Body>
       <Modal.Footer>
