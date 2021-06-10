@@ -95,36 +95,43 @@ export function Vehicle() {
   };
 
   const updateVehicleDetails = (e) => {
-    e.preventDefault();
-    dispatch(
-      updateVehicleAction({
-        vehicleId: state.Vehiclee.refvehicle.vehicleId,
-        vehicleName,
-        vehicleType,
-        vehiclePlateNumber,
-        vehicleColor,
-        vehicleLocation,
-        numberOfSeats,
-        dailyPrice,
-        picture,
-        vehicleBrand: {
-          brand_id: vehicleBrand,
-        },
-      })
-    );
+    if (formEL.current.checkValidity() === false) {
+      // hanlde the false case
+      e.preventDefault();
+      e.stopPropagation();
+      formEL.current.classList.add("was-validated");
+    } else {
+      e.preventDefault();
+      dispatch(
+        updateVehicleAction({
+          vehicleId: state.Vehiclee.refvehicle.vehicleId,
+          vehicleName,
+          vehicleType,
+          vehiclePlateNumber,
+          vehicleColor,
+          vehicleLocation,
+          numberOfSeats,
+          dailyPrice,
+          picture,
+          vehicleBrand: {
+            brand_id: vehicleBrand,
+          },
+        })
+      );
 
-    setSuccessOperation(true);
-    setTimeout(() => setSuccessOperation(false), 2000);
+      setSuccessOperation(true);
+      setTimeout(() => setSuccessOperation(false), 2000);
 
-    setVehicleName("");
-    setVehicleType("");
-    setVehiclePlateNumber("");
-    setVehicleColor("");
-    setVehicleLocation("");
-    setNumberOfSeats("");
-    setDailyPrice("");
-    setPicture("");
-    setVehicleBrand("");
+      setVehicleName("");
+      setVehicleType("");
+      setVehiclePlateNumber("");
+      setVehicleColor("");
+      setVehicleLocation("");
+      setNumberOfSeats("");
+      setDailyPrice("");
+      setPicture("");
+      setVehicleBrand("");
+    }
   };
 
   return (

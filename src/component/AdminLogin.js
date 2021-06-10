@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { AppNavBar } from "../common/AppNavBar";
@@ -8,6 +8,7 @@ export function AdminLogin() {
   const dispatch = useDispatch();
   const history = useHistory();
   const state = useSelector((state) => state);
+  const formEL = useRef();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,19 +19,26 @@ export function AdminLogin() {
   const updateEmail = (e) => setEmail(e.target.value);
   const updatePassword = (e) => setPassword(e.target.value);
 
-  const AdminLoginFunction = () => {
-    dispatch(
-      AdminLoginAction({
-        email,
-        password,
-      })
-    );
+  const AdminLoginFunction = (e) => {
+    if (formEL.current.checkValidity() === false) {
+      // hanlde the false case
+      e.preventDefault();
+      e.stopPropagation();
+      formEL.current.classList.add("was-validated");
+    } else {
+      dispatch(
+        AdminLoginAction({
+          email,
+          password,
+        })
+      );
 
-    setErrorOperation(true);
-    setTimeout(() => setErrorOperation(false), 5000);
+      setErrorOperation(true);
+      setTimeout(() => setErrorOperation(false), 5000);
 
-    console.log(email, password);
-    console.log(state.email, state.password);
+      console.log(email, password);
+      console.log(state.email, state.password);
+    }
   };
 
   if (state.AdminLogin.loginAction === true) {
@@ -50,27 +58,30 @@ export function AdminLogin() {
           {state.UserLogin.loginAction === false && errorOperation && (
             <div className="alert alert-danger">login failure</div>
           )}
-
-          <input
-            type="text"
-            className="form-control mb-2"
-            placeholder="Enter Email"
-            required="required"
-            onChange={(e) => updateEmail(e)}
-          />
-          <input
-            type="password"
-            className="form-control mb-2"
-            placeholder="Enter Password"
-            required="required"
-            onChange={(e) => updatePassword(e)}
-          />
-          <input
-            type="button"
-            className="btn btn-outline-dark w-100"
-            value="Login"
-            onClick={() => AdminLoginFunction()}
-          />
+          <form ref={formEL} class="needs-validation" novalidate>
+            <input
+              type="text"
+              className="form-control mb-2"
+              placeholder="Enter Email"
+              onChange={(e) => updateEmail(e)}
+              required
+              pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+            />
+            <input
+              type="password"
+              className="form-control mb-2"
+              placeholder="Enter Password"
+              onChange={(e) => updatePassword(e)}
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#%^*])[a-zA-Z\d!@#%^*]{8,}$"
+              required
+            />
+            <input
+              type="button"
+              className="btn btn-outline-dark w-100"
+              value="Login"
+              onClick={(e) => AdminLoginFunction(e)}
+            />
+          </form>
         </div>
         <div className="col-3 col-md-3  d-none d-md-block"></div>
       </div>
