@@ -16,6 +16,7 @@ export const VehicleBooking = () => {
   const [vehicle, setvehicle] = useState("");
 
   const [successOperation, setSuccessOperation] = useState(false);
+  const [errorOperation, setErrorOperation] = useState(false);
 
   const updatebookingStartDate = (e) => setbookingStartDate(e.target.value);
   const updatebookingEndDate = (e) => setbookingEndDate(e.target.value);
@@ -46,8 +47,13 @@ export const VehicleBooking = () => {
         })
       );
 
+      // if (state.VehicleBooking.success === true) {
       setSuccessOperation(true);
       setTimeout(() => setSuccessOperation(false), 2000);
+      // } else {
+      // setErrorOperation(true);
+      // setTimeout(() => setSuccessOperation(false), 2000);
+      // }
 
       setbookingStartDate("");
       setbookingEndDate("");
@@ -71,6 +77,10 @@ export const VehicleBooking = () => {
           {successOperation && (
             <div className="alert alert-success">Vehicle Booked</div>
           )}
+
+          {/* {errorOperation && ( */}
+          {/* <div className="alert alert-success">Vehicle Not Booked</div> */}
+          {/* )} */}
 
           <form ref={formEL} class="needs-validation" novalidate>
             <div>
@@ -100,7 +110,7 @@ export const VehicleBooking = () => {
                 value={bookingStartDate}
                 onChange={(e) => updatebookingStartDate(e)}
                 min="2021-06-11"
-                max="2021-12-10"
+                max="2022-12-10"
                 required
               />
             </div>
@@ -113,7 +123,7 @@ export const VehicleBooking = () => {
                 value={bookingEndDate}
                 onChange={(e) => updatebookingEndDate(e)}
                 min="2021-06-11"
-                max="2021-12-10"
+                max="2022-12-10"
                 required
               />
             </div>

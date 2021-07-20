@@ -1,5 +1,6 @@
 const initState = {
   list: [],
+  success: false,
 };
 
 // ACTION TYPES
@@ -25,6 +26,7 @@ export function VehicleBookingAction(payload) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
     });
+    payload.success = true;
 
     // UPDATE THE UI
     dispatch({ type: VEHICLE_BOOKING, payload: payload });
